@@ -3,26 +3,19 @@ import matplotlib.pyplot as plt
 
 df = sns.load_dataset("iris")
 
-sns.set()
 sns.set_style("darkgrid")
 
-print(df.head())
-
-sns.histplot(df["sepal_length"])
+sns.histplot(df["sepal_length"],kde=True,color="purple")
+plt.title("hist + kde")
 plt.show()
 
-sns.kdeplot(df["sepal_width"])
+sns.boxplot(x="species",y="sepal_length",data=df,palette="Set2")
+plt.title("box plot")
 plt.show()
 
-sns.scatterplot(x="sepal_length",y="sepal_width",data=df)
+sns.violinplot(x="species",y="sepal_width",data=df,palette="cool")
+plt.title("violin plot")
 plt.show()
 
-sns.barplot(x="species",y="sepal_length",data=df)
-plt.show()
-
-g = sns.FacetGrid(df,col="species")
-g.map(sns.scatterplot,"sepal_length","sepal_width")
-plt.show()
-
-sns.pairplot(df)
+sns.pairplot(df,hue="species")
 plt.show()
