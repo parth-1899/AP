@@ -4,6 +4,7 @@ from scipy import integrate
 from scipy import optimize
 from scipy import linalg
 from scipy import fft
+from scipy import ndimage
 
 a = constants.pi
 print("pi =",a)
@@ -21,13 +22,14 @@ r = optimize.root(g,0)
 print("root =",r.x)
 
 m = np.array([[1,2],[3,4]])
-inv = linalg.inv(m)
-det = linalg.det(m)
-
-print("inverse =",inv)
-print("det =",det)
+print("det =",linalg.det(m))
+print("inv =",linalg.inv(m))
 
 x = np.array([1,2,3,4])
-y = fft.fft(x)
+print("fft =",fft.fft(x))
 
-print("fft =",y)
+img = np.array([[1,2,3],[4,5,6],[7,8,9]])
+blur = ndimage.gaussian_filter(img,1)
+
+print("image =",img)
+print("blur =",blur)
